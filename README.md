@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a **minimalist photography site,** part blog, part photo journal, created to showcase personal photographs alongside short texts that tell the story, context, or emotion behind each shot.
+A minimalist photo journal of very bad digital photos taken with a forgotten family camera and an ancient Android phone.
 
 The goal is to create an experience similar to a very stripped-down Instagram or photo blog, but without feeds, algorithms, or distractions. Just images, words, and space.
 
