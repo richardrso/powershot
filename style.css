@@ -289,6 +289,93 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 1px solid var(--border);
+    box-shadow: 0 30px 60px var(--shadow);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+.carousel-nav:hover {
+    opacity: 1;
+    background: var(--hover-bg);
+    border-color: var(--accent);
+}
+
+.carousel-nav.prev {
+    left: -4rem;
+}
+
+.carousel-nav.next {
+    right: -4rem;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--accent);
+    width: 24px;
+    border-radius: 4px;
+}
+
+.carousel-counter {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
 .modal-image-container img {
@@ -423,5 +510,23 @@ footer p {
         top: 1rem;
         right: 1rem;
         font-size: 1.2rem;
+    }
+
+    .carousel-nav {
+        padding: 0.75rem;
+        font-size: 1.2rem;
+    }
+
+    .carousel-nav.prev {
+        left: 0.5rem;
+    }
+
+    .carousel-nav.next {
+        right: 0.5rem;
+    }
+
+    .carousel-counter {
+        top: -2rem;
+        font-size: 0.75rem;
     }
 }

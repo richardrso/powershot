@@ -1,11 +1,15 @@
 // ==========================================
-// PHOTO DATA - ADD YOUR PHOTOS HERE
+// PHOTO DATA - ADD PHOTOS HERE
 // ==========================================
 
 const photos = [
     {
         id: 1,
-        src: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&h=1067&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&h=1067&fit=crop',
+            'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=1067&fit=crop',
+            'https://images.unsplash.com/photo-1514566840885-68bed4e8ab67?w=800&h=1067&fit=crop'
+        ],
         ratio: '3:4',
         title: {
             en: 'Sunset in Lisboa',
@@ -18,7 +22,9 @@ const photos = [
     },
     {
         id: 2,
-        src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop'
+        ],
         ratio: '1:1',
         title: {
             en: 'Mountain Solitude',
@@ -31,7 +37,10 @@ const photos = [
     },
     {
         id: 3,
-        src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=1067&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=1067&fit=crop',
+            'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=1067&fit=crop'
+        ],
         ratio: '3:4',
         title: {
             en: 'Cosmic Perspective',
@@ -44,7 +53,11 @@ const photos = [
     },
     {
         id: 4,
-        src: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&h=800&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=800&fit=crop'
+        ],
         ratio: '1:1',
         title: {
             en: 'Urban Geometry',
@@ -57,7 +70,9 @@ const photos = [
     },
     {
         id: 5,
-        src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=1067&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=1067&fit=crop'
+        ],
         ratio: '3:4',
         title: {
             en: 'Endless Horizon',
@@ -70,7 +85,9 @@ const photos = [
     },
     {
         id: 6,
-        src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=800&fit=crop',
+        images: [
+            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=800&fit=crop'
+        ],
         ratio: '1:1',
         title: {
             en: 'Forest Whispers',
@@ -165,11 +182,11 @@ function renderGallery() {
     gallery.innerHTML = photos.map(photo => `
         <div class="photo-card" data-id="${photo.id}">
             <div class="photo-wrapper ratio-${photo.ratio.replace(':', '-')}">
-                <img src="${photo.src}" alt="${photo.title[currentLang]}" loading="lazy">
+                <img src="${photo.images[0]}" alt="${photo.title[currentLang]}" loading="lazy">
             </div>
             <div class="photo-info">
                 <div class="photo-title">${photo.title[currentLang]}</div>
-                <div class="photo-ratio">${photo.ratio}</div>
+                <div class="photo-ratio">${photo.ratio}${photo.images.length > 1 ? ' · ' + photo.images.length + ' photos' : ''}</div>
             </div>
         </div>
     `).join('');
@@ -190,24 +207,80 @@ function renderGallery() {
 const modal = document.getElementById('modal');
 const modalContent = document.getElementById('modalContent');
 const modalClose = document.getElementById('modalClose');
+let currentPhotoIndex = 0;
+let currentPhoto = null;
 
 // Open modal with photo details
 function openModal(photoId) {
-    const photo = photos.find(p => p.id === photoId);
-    if (!photo) return;
+    currentPhoto = photos.find(p => p.id === photoId);
+    if (!currentPhoto) return;
 
+    currentPhotoIndex = 0;
+    renderModalContent();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Render modal content with carousel
+function renderModalContent() {
+    const hasMultipleImages = currentPhoto.images.length > 1;
+    
     modalContent.innerHTML = `
         <div class="modal-image-container">
-            <img src="${photo.src}" alt="${photo.title[currentLang]}">
+            ${hasMultipleImages ? `<div class="carousel-counter">${currentPhotoIndex + 1} / ${currentPhoto.images.length}</div>` : ''}
+            <div class="carousel-container">
+                ${hasMultipleImages && currentPhotoIndex > 0 ? `
+                    <button class="carousel-nav prev" id="prevBtn">‹</button>
+                ` : ''}
+                <img class="carousel-image" src="${currentPhoto.images[currentPhotoIndex]}" alt="${currentPhoto.title[currentLang]}">
+                ${hasMultipleImages && currentPhotoIndex < currentPhoto.images.length - 1 ? `
+                    <button class="carousel-nav next" id="nextBtn">›</button>
+                ` : ''}
+            </div>
+            ${hasMultipleImages ? `
+                <div class="carousel-dots" id="carouselDots">
+                    ${currentPhoto.images.map((_, i) => `
+                        <div class="carousel-dot ${i === currentPhotoIndex ? 'active' : ''}" data-index="${i}"></div>
+                    `).join('')}
+                </div>
+            ` : ''}
         </div>
         <div class="modal-text">
-            <h2 class="modal-title">${photo.title[currentLang]}</h2>
-            <p class="modal-description">${photo.description[currentLang]}</p>
+            <h2 class="modal-title">${currentPhoto.title[currentLang]}</h2>
+            <p class="modal-description">${currentPhoto.description[currentLang]}</p>
         </div>
     `;
 
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // Add event listeners for carousel controls
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    if (prevBtn) prevBtn.addEventListener('click', previousImage);
+    if (nextBtn) nextBtn.addEventListener('click', nextImage);
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToImage(index));
+    });
+}
+
+// Carousel navigation functions
+function nextImage() {
+    if (currentPhotoIndex < currentPhoto.images.length - 1) {
+        currentPhotoIndex++;
+        renderModalContent();
+    }
+}
+
+function previousImage() {
+    if (currentPhotoIndex > 0) {
+        currentPhotoIndex--;
+        renderModalContent();
+    }
+}
+
+function goToImage(index) {
+    currentPhotoIndex = index;
+    renderModalContent();
 }
 
 // Close modal
@@ -244,16 +317,24 @@ document.addEventListener('dragstart', (e) => {
     }
 });
 
-// Prevent keyboard shortcuts for saving
+// Prevent keyboard shortcuts for saving and add carousel navigation
 document.addEventListener('keydown', (e) => {
     // Prevent Ctrl+S / Cmd+S (Save page)
     if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
         return false;
     }
-    // Still allow Escape to close modal
+    // Escape to close modal
     if (e.key === 'Escape' && modal.classList.contains('active')) {
         closeModal();
+    }
+    // Arrow keys for carousel navigation
+    if (modal.classList.contains('active') && currentPhoto) {
+        if (e.key === 'ArrowRight') {
+            nextImage();
+        } else if (e.key === 'ArrowLeft') {
+            previousImage();
+        }
     }
 });
 
