@@ -1,5 +1,5 @@
 // ==========================================
-// PHOTO DATA - ADD PHOTOS HERE
+// PHOTO DATA - ADD YOUR PHOTOS HERE
 // ==========================================
 
 const photos = [
@@ -226,8 +226,32 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-// Close modal with Escape key
+// ==========================================
+// IMAGE PROTECTION
+// ==========================================
+
+// Disable right-click completely on the entire page
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    return false;
+});
+
+// Disable drag and drop on images
+document.addEventListener('dragstart', (e) => {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Prevent keyboard shortcuts for saving
 document.addEventListener('keydown', (e) => {
+    // Prevent Ctrl+S / Cmd+S (Save page)
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        return false;
+    }
+    // Still allow Escape to close modal
     if (e.key === 'Escape' && modal.classList.contains('active')) {
         closeModal();
     }
