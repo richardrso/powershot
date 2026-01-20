@@ -46,6 +46,8 @@ By using only native web technologies, the site remains easy to understand, easy
 * Photography-first presentation
 * Short written reflections or stories per image
 * Fully static, client-side only
+* Light and dark mode toggle
+* Language toggle between EN and PT-BR
 * Responsive and accessible by design
 * No tracking, no ads, no algorithms
 
