@@ -2,8 +2,6 @@
 
 ## Overview
 
-A minimalist website template for photographers who value simplicity and storytelling. Designed as a visual journal, it emphasizes imagery through clean layouts, soft typography, and an uncluttered aesthetic—allowing each photograph to speak for itself.
-
 The goal is to create an experience similar to a very stripped-down Instagram or photo blog, but without feeds, algorithms, or distractions. Just images, words, and space.
 
 ---
