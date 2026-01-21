@@ -106,11 +106,11 @@ const photos = [
 
 const translations = {
     en: {
-        photographerName: 'Richard Rios',
+        photographerName: 'Photography',
         footerText: 'All photographs by'
     },
     pt: {
-        photographerName: 'Richard Rios',
+        photographerName: 'Photography',
         footerText: 'Todas as fotografias por'
     }
 };
