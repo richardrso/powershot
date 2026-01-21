@@ -1,0 +1,194 @@
+# ==========================================
+# PHOTOGRAPHY PORTFOLIO - .gitignore
+# ==========================================
+# This keeps photos private in GitHub
+# while the code remains public
+# ==========================================
+
+# ==========================================
+# PHOTOS - Keep all images private
+# ==========================================
+
+# Exclude entire photos folder
+photos/
+photos/*
+
+# Exclude common image formats anywhere in project
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.png
+*.PNG
+#*.gif
+#*.GIF
+#*.webp
+#*.WEBP
+#*.svg
+#*.SVG
+#*.bmp
+#*.BMP
+#*.tiff
+#*.TIFF
+#*.ico
+#*.ICO
+
+# Exclude raw photo formats (if you ever add them)
+*.raw
+*.RAW
+*.cr2
+*.CR2
+*.nef
+*.NEF
+*.arw
+*.ARW
+*.dng
+*.DNG
+
+# ==========================================
+# EXCEPTION: Allow logo/icons if needed
+# ==========================================
+# Uncomment these if you want to include specific images
+!logo.png
+!favicon.ico
+!icons/*.svg
+
+# ==========================================
+# SYSTEM FILES
+# ==========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ==========================================
+# EDITOR FILES
+# ==========================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# IntelliJ / WebStorm
+.idea/
+*.iml
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ==========================================
+# NODE/NPM (if you add them later)
+# ==========================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ==========================================
+# BUILD / DEPLOY
+# ==========================================
+
+# Build outputs
+dist/
+build/
+out/
+
+# Environment variables (never commit these!)
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ==========================================
+# NETLIFY
+# ==========================================
+
+# Netlify local functions
+.netlify/
+
+# ==========================================
+# BACKUP / TEMPORARY FILES
+# ==========================================
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+*.temp
+
+# Archives (don't commit zips of photos)
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# ==========================================
+# LIGHTROOM / PHOTOSHOP
+# ==========================================
+
+# Adobe Lightroom
+*.lrcat
+*.lrcat-data
+*.lrdata
+Lightroom Catalog.lrcat
+Lightroom Catalog Previews.lrdata/
+
+# Adobe Photoshop
+*.psd
+*.psb
+
+# ==========================================
+# VIDEO FILES (if you add them)
+# ==========================================
+
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.flv
+*.webm
+
+# ==========================================
+# LOGS
+# ==========================================
+
+*.log
+logs/
