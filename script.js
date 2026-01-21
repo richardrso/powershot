@@ -7,8 +7,7 @@ const photos = [
         id: 1,
         images: [
             'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&h=1067&fit=crop',
-            'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=1067&fit=crop',
-            'https://images.unsplash.com/photo-1514566840885-68bed4e8ab67?w=800&h=1067&fit=crop'
+            'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&h=1067&fit=crop'
         ],
         ratio: '3:4',
         title: {
