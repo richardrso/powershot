@@ -2,7 +2,7 @@
 
 ## Overview
 
-A minimalist photo journal of very bad digital photos taken with a forgotten family camera and an ancient Android phone.
+A minimalist website template for photographers who value simplicity and storytelling. Designed as a visual journal, it emphasizes imagery through clean layouts, soft typography, and an uncluttered aesthetic—allowing each photograph to speak for itself.
 
 The goal is to create an experience similar to a very stripped-down Instagram or photo blog, but without feeds, algorithms, or distractions. Just images, words, and space.
 
@@ -48,6 +48,7 @@ By using only native web technologies, the site remains easy to understand, easy
 * Fully static, client-side only
 * Light and dark mode toggle
 * Language toggle between EN and PT-BR
+* Image carousel
 * Responsive and accessible by design
 * No tracking, no ads, no algorithms
 
